@@ -78,7 +78,7 @@ export const App = () => {
     const [contentDraft, setContentDraft] = useState<ContentDraft<{
         ref: ImageRef;
     }> | null>(null);
-    const [enlargeFactor, setEnlargeFactor] = useState("2");
+
     const [reflectionFactor, setReflectionFactor] = useState(Reflection.Above);
     const [offsetFactor, setOffsetFactor] = useState(1);
     const [opacityFactor, setOpacityFactor] = useState(1);
@@ -276,8 +276,8 @@ export const App = () => {
     const resetData = () => {
         setFiles([]);
         setReflectionFactor(Reflection.Above);
-        setOffsetFactor(1)
-        setOpacityFactor(1)
+        setOffsetFactor(1);
+        setOpacityFactor(1);
         setOriginImageURL("");
         resetProcessImage();
         setImageSourceType("unknown");
@@ -335,8 +335,7 @@ export const App = () => {
 
             ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
 
-            let gradient;
-
+            let gradient: CanvasGradient;
             switch (reflectionFactor) {
                 case Reflection.Above:
                     gradient = ctx.createLinearGradient(0, 0, 0, cssHeight);
