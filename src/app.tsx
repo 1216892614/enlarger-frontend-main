@@ -383,26 +383,6 @@ export const App = () => {
 
             ctx.globalCompositeOperation = "source-over";
             ctx.globalAlpha = 1;
-
-            const outputCanvas = document.createElement("canvas");
-            const outputCtx = outputCanvas.getContext("2d");
-
-            outputCanvas.width = imgWidth;
-            outputCanvas.height = imgHeight;
-
-            if (!outputCtx) return;
-
-            outputCtx.drawImage(img, 0, 0, imgWidth, imgHeight);
-
-            outputCanvas.toBlob((blob) => {
-                if (!blob) return;
-
-                const file = new File([blob], "processed-image.png", {
-                    type: "image/png",
-                });
-
-                setFiles([file]);
-            }, "image/png");
         };
 
         img.onerror = () => {
